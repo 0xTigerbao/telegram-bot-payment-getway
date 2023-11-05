@@ -2,13 +2,14 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { UsersModule } from "./users/users.module";
-import { PrismaService } from "./prisma/prisma.service";
-import { ConfigModule } from "@nestjs/config";
+import { BotModule } from "./bot/bot.module";
+import { OnchainModule } from "./onchain/onchain.module";
+import { PrismaModule } from "./prisma/prisma.module";
 
 @Module({
-  imports: [UsersModule, ConfigModule.forRoot()],
+  imports: [UsersModule, BotModule, OnchainModule, PrismaModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService]
+  providers: [AppService]
 })
 export class AppModule {
 }
